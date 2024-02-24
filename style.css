@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.couple-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+}
+
+.couple-card {
+    width: 45%; /* Lebar pasangan gambar */
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* Mengubah arah jadi vertikal */
+    align-items: center; /* Menengahkan elemen dalam pasangan */
+}
+
+.couple-card h3 {
+    margin-top: 0;
+}
+
+.couple-card img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px; /* Menghilangkan lingkaran */
+    margin-bottom: 5px; /* Jarak antara gambar */
+}
+
+.download-button-m {
+    background-color: #4CAF50; /* Hijau */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 80%; /* Lebar tombol download */
+    margin-bottom: 10px; /* Jarak antara tombol download */
+}
+
+.download-button-f {
+    background-color: #f44336; /* Merah */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 80%; /* Lebar tombol download */
+    margin-bottom: 10px; /* Jarak antara tombol download */
+}

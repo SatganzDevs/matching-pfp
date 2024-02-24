@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Couple Image Gallery</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="couple-container" id="coupleContainer"></div>
+<script>
+function downloadImage(url, name) {
+            var link = document.createElement('a');
+            link.href = url;
+            link.download = name; 
+            document.body.appendChild(link); 
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Mengambil data dari URL GitHub
+        const url = 'https://raw.githubusercontent.com/SatganzDevs/database/main/kopel.json';
+
+        // Mengambil data JSON dari URL menggunakan fetch
+        fetch(url)
+            .then(response => response.json())
+            .then(async data => {
+                const coupleContainer = document.getElementById('coupleContainer');
+                data.forEach(async (coupleData, index) => {
+                    const coupleCard = document.createElement('div');
+                    coupleCard.classList.add('couple-card');
+
+                    // Menampilkan gambar female (cewe)
+                    const femaleImage = document.createElement('img');
+                    femaleImage.src = coupleData.female;
+                    coupleCard.appendChild(femaleImage);
+
+                    // Menampilkan gambar male (cowo)
+                    const maleImage = document.createElement('img');
+                    maleImage.src = coupleData.male;
+                    coupleCard.appendChild(maleImage);
+
+                    // Tombol unduh untuk male (cowo)
+                    const downloadButtonMale = document.createElement('button');
+                    downloadButtonMale.classList.add('download-button-m');
+                    downloadButtonMale.textContent = 'Download Male';
+                    downloadButtonMale.addEventListener('click', () => {
+                        downloadImage(coupleData.male, 'male_image.jpg');
+                    });
+                    coupleCard.appendChild(downloadButtonMale);
+
+                    // Tombol unduh untuk female (cewe)
+                    const downloadButtonFemale = document.createElement('button');
+                    downloadButtonFemale.classList.add('download-button-f');
+                    downloadButtonFemale.textContent = 'Download Female';
+                    downloadButtonFemale.addEventListener('click', () => {
+                        downloadImage(coupleData.female, 'female_image.jpg');
+                    });
+                    coupleCard.appendChild(downloadButtonFemale);
+
+                    coupleContainer.appendChild(coupleCard);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+</html>
